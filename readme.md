@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save is-path-inside
 ```
 
@@ -23,6 +23,9 @@ isPathInside('x/y', 'a/b/c');
 
 isPathInside('a/b/c', 'a/b/c');
 //=> false
+
+isPathInside('dev/unicorn', '/Users/sindresorhus/dev/unicorn');
+//=> true
 ```
 
 
