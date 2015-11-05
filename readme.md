@@ -15,7 +15,7 @@ $ npm install --save is-path-inside
 ```js
 var isPathInside = require('is-path-inside');
 
-isPathInside('a/b', 'a/b/c');
+isPathInside('a/b/c', 'a/b');
 //=> true
 
 isPathInside('x/y', 'a/b/c');
