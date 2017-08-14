@@ -28,10 +28,10 @@
     "resolve"
   ],
   "dependencies": {
-    "path-is-inside": "^1.0.1"
+    "path-is-inside": "^1.0.2"
   },
   "devDependencies": {
-    "ava": "*",
-    "xo": "*"
+    "ava": "0.17.0",
+    "xo": "0.16.0"
   }
 }
