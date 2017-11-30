@@ -1,8 +1,8 @@
 'use strict';
-var path = require('path');
-var pathIsInside = require('path-is-inside');
+const path = require('path');
+const pathIsInside = require('path-is-inside');
 
-module.exports = function (a, b) {
+module.exports = (a, b) => {
 	a = path.resolve(a);
 	b = path.resolve(b);
 
