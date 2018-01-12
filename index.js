@@ -6,9 +6,5 @@ module.exports = (a, b) => {
 	a = path.resolve(a);
 	b = path.resolve(b);
 
-	if (a === b) {
-		return false;
-	}
-
-	return pathIsInside(a, b);
+	return a === b ? false : pathIsInside(a, b);
 };
