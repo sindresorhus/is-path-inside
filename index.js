@@ -2,13 +2,13 @@
 const path = require('path');
 const pathIsInside = require('path-is-inside');
 
-module.exports = (a, b) => {
-	a = path.resolve(a);
-	b = path.resolve(b);
+module.exports = (childPath, parentPath) => {
+	childPath = path.resolve(childPath);
+	parentPath = path.resolve(parentPath);
 
-	if (a === b) {
+	if (childPath === parentPath) {
 		return false;
 	}
 
-	return pathIsInside(a, b);
+	return pathIsInside(childPath, parentPath);
 };

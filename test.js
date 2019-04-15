@@ -1,9 +1,9 @@
 import test from 'ava';
-import m from '.';
+import isPathInside from '.';
 
 test('main', t => {
-	t.true(m('a/b/c', 'a/b'));
-	t.true(m('/a/b/c', '/a/b'));
-	t.false(m('a/b', 'a/b'));
-	t.false(m('/a/b', '/a/b'));
+	t.true(isPathInside('a/b/c', 'a/b'));
+	t.true(isPathInside('/a/b/c', '/a/b'));
+	t.false(isPathInside('a/b', 'a/b'));
+	t.false(isPathInside('/a/b', '/a/b'));
 });
