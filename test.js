@@ -4,9 +4,13 @@ import isPathInside from '.';
 
 test('main', t => {
 	t.true(isPathInside('a/b/c', 'a/b'));
+	t.true(isPathInside('a/b/c/', 'a/b/'));
+	t.true(isPathInside('a/b/c', 'a/b/'));
+	t.true(isPathInside('a/b/c/', 'a/b'));
 	t.true(isPathInside('/a/b/c', '/a/b'));
 	t.false(isPathInside('a/b', 'a/b'));
 	t.false(isPathInside('/a/b', '/a/b'));
+	t.false(isPathInside('A/b/c', 'a/b'));
 });
 
 test('win32', t => {
@@ -16,6 +20,10 @@ test('win32', t => {
 	Object.defineProperty(process, 'platform', {value: 'win32'});
 	Object.defineProperty(path, 'sep', {value: '\\'});
 
+	t.true(isPathInside('a\\b\\c', 'a\\b'));
+	t.true(isPathInside('a\\b\\c\\', 'a\\b'));
+	t.true(isPathInside('a\\b\\c', 'a\\b\\'));
+	t.true(isPathInside('a\\b\\c\\', 'a\\b\\'));
 	t.true(isPathInside('A\\b\\c', 'a\\b'));
 	t.false(isPathInside('A\\b', 'a\\b'));
 	t.true(isPathInside('c:\\a\\b\\c\\d', 'C:\\a\\b\\c'));

@@ -29,6 +29,25 @@ isPathInside('/Users/sindresorhus/dev/unicorn', '/Users/sindresorhus');
 ```
 
 
+## API
+
+### isPathInside(childPath, parentPath)
+
+Note that relative paths are resolved against `process.cwd()` to make them absolute.
+
+#### childPath
+
+Type: `string`
+
+The path that should be inside `parentPath`.
+
+#### parentPath
+
+Type: `string`
+
+The path that should contain `childPath`.
+
+
 ---
 
 <div align="center">

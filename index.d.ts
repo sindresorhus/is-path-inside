@@ -1,6 +1,8 @@
 /**
 Check if a path is inside another path.
 
+Note that relative paths are resolved against `process.cwd()` to make them absolute.
+
 @example
 ```
 import isPathInside = require('is-path-inside');
