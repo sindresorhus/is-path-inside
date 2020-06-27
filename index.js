@@ -6,7 +6,7 @@ module.exports = (childPath, parentPath) => {
 	return Boolean(
 		relation &&
 		relation !== '..' &&
-		!relation.startsWith('..' + path.sep) &&
+		!relation.startsWith(`..${path.sep}`) &&
 		relation !== path.resolve(childPath)
 	);
 };
