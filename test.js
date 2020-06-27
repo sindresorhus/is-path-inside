@@ -49,11 +49,10 @@ test('main', t => {
 });
 
 test('win32', t => {
-	const { platform } = process;
-	const {resolve, sep} = path;
+	const {relative, resolve, sep} = path;
 
+	path.relative = path.win32.relative;
 	path.resolve = path.win32.resolve;
-	Object.defineProperty(process, 'platform', {value: 'win32'});
 	Object.defineProperty(path, 'sep', {value: path.win32.sep});
 
 	t.true(isPathInside('a', '\\'));
@@ -106,7 +105,7 @@ test('win32', t => {
 	t.false(isPathInside('C:\\a\\b', 'D:\\a'));
 	t.false(isPathInside('a\\bc\\d', 'a\\b'));
 
+	path.relative = relative;
 	path.resolve = resolve;
-	Object.defineProperty(process, 'platform', {value: platform});
 	Object.defineProperty(path, 'sep', {value: sep});
 });
