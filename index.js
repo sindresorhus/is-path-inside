@@ -14,8 +14,7 @@ module.exports = (childPath, parentPath) => {
 		return false;
 	}
 
-	childPath += path.sep;
-	parentPath += path.sep;
+	parentPath += parentPath.endsWith(path.sep) ? '' : path.sep;
 
 	return childPath.startsWith(parentPath);
 };
