@@ -1,6 +1,6 @@
-import path from 'path';
+import path from 'node:path';
 import test from 'ava';
-import isPathInside from '.';
+import isPathInside from './index.js';
 
 test('main', t => {
 	t.true(isPathInside('a', '/'));
