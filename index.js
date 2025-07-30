@@ -1,12 +1,9 @@
 import path from 'node:path';
 
 export default function isPathInside(childPath, parentPath) {
-	const relation = path.relative(parentPath, childPath);
+	const resolvedParent = path.resolve(parentPath);
+	const resolvedChild = path.resolve(childPath);
+	const relative = path.relative(resolvedParent, resolvedChild);
 
-	return Boolean(
-		relation &&
-		relation !== '..' &&
-		!relation.startsWith(`..${path.sep}`) &&
-		relation !== path.resolve(childPath)
-	);
+	return !relative.startsWith('..') && !path.isAbsolute(relative);
 }
