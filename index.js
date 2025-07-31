@@ -5,5 +5,5 @@ export default function isPathInside(childPath, parentPath) {
 	const resolvedChild = path.resolve(childPath);
 	const relative = path.relative(resolvedParent, resolvedChild);
 
-	return !relative.startsWith('..') && !path.isAbsolute(relative);
+	return Boolean(relative) && !relative.startsWith('..') && !path.isAbsolute(relative);
 }

@@ -31,7 +31,7 @@ test('main', t => {
 	t.true(isPathInside('A/b', 'A'));
 	t.true(isPathInside('a/../b', '.'));
 	t.false(isPathInside('a/../../b', '.'));
-	t.true(isPathInside('/a/b/../', '/a'));
+	t.false(isPathInside('/a/b/../', '/a'));
 
 	t.true(isPathInside('../a', '/'));
 	t.true(isPathInside('../a/', '/'));
@@ -49,29 +49,29 @@ test('main', t => {
 	t.true(isPathInside('/a/b/c/', '/a/b/'));
 
 	t.false(isPathInside('..', '.'));
-	t.true(isPathInside('.', '.'));
-	t.true(isPathInside('.', './'));
-	t.true(isPathInside('./', '.'));
-	t.true(isPathInside('./', './'));
+	t.false(isPathInside('.', '.'));
+	t.false(isPathInside('.', './'));
+	t.false(isPathInside('./', '.'));
+	t.false(isPathInside('./', './'));
 	t.false(isPathInside('.', 'a'));
 	t.false(isPathInside('.', 'a/'));
 	t.false(isPathInside('./', 'a'));
 	t.false(isPathInside('./', 'a/'));
-	t.true(isPathInside('a', 'a'));
-	t.true(isPathInside('a', 'a/'));
-	t.true(isPathInside('a/', 'a'));
-	t.true(isPathInside('a/', 'a/'));
-	t.true(isPathInside('/', '/'));
+	t.false(isPathInside('a', 'a'));
+	t.false(isPathInside('a', 'a/'));
+	t.false(isPathInside('a/', 'a'));
+	t.false(isPathInside('a/', 'a/'));
+	t.false(isPathInside('/', '/'));
 	t.false(isPathInside('/', '/a'));
 	t.false(isPathInside('/', '/a/'));
-	t.true(isPathInside('/a', '/a'));
-	t.true(isPathInside('/a', '/a/'));
-	t.true(isPathInside('/a/', '/a'));
-	t.true(isPathInside('/a/', '/a/'));
-	t.true(isPathInside('/a/b', '/a/b'));
+	t.false(isPathInside('/a', '/a'));
+	t.false(isPathInside('/a', '/a/'));
+	t.false(isPathInside('/a/', '/a'));
+	t.false(isPathInside('/a/', '/a/'));
+	t.false(isPathInside('/a/b', '/a/b'));
 	t.false(isPathInside('/a/bc/d', '/a/b'));
 	t.false(isPathInside('a/../b', 'a'));
-	t.true(isPathInside('a/../b', 'b'));
+	t.false(isPathInside('a/../b', 'b'));
 });
 
 test('win32', t => {
@@ -118,35 +118,35 @@ test('win32', t => {
 	t.true(isPathInside('c:\\a\\b\\c\\d', 'C:\\a\\b\\c'));
 
 	t.false(isPathInside('..', '.'));
-	t.true(isPathInside('.', '.'));
-	t.true(isPathInside('.', '.\\'));
-	t.true(isPathInside('.\\', '.'));
-	t.true(isPathInside('.\\', '.\\'));
+	t.false(isPathInside('.', '.'));
+	t.false(isPathInside('.', '.\\'));
+	t.false(isPathInside('.\\', '.'));
+	t.false(isPathInside('.\\', '.\\'));
 	t.false(isPathInside('.', 'a'));
 	t.false(isPathInside('.', 'a\\'));
 	t.false(isPathInside('.\\', 'a'));
 	t.false(isPathInside('.\\', 'a\\'));
-	t.true(isPathInside('a', 'a'));
-	t.true(isPathInside('a', 'a\\'));
-	t.true(isPathInside('a\\', 'a'));
-	t.true(isPathInside('a\\', 'a\\'));
-	t.true(isPathInside('\\', '\\'));
+	t.false(isPathInside('a', 'a'));
+	t.false(isPathInside('a', 'a\\'));
+	t.false(isPathInside('a\\', 'a'));
+	t.false(isPathInside('a\\', 'a\\'));
+	t.false(isPathInside('\\', '\\'));
 	t.false(isPathInside('\\', '\\a'));
 	t.false(isPathInside('\\', '\\a\\'));
-	t.true(isPathInside('\\a', '\\a'));
-	t.true(isPathInside('\\a', '\\a\\'));
-	t.true(isPathInside('\\a\\', '\\a'));
-	t.true(isPathInside('\\a\\', '\\a\\'));
-	t.true(isPathInside('\\a\\b', '\\a\\b'));
+	t.false(isPathInside('\\a', '\\a'));
+	t.false(isPathInside('\\a', '\\a\\'));
+	t.false(isPathInside('\\a\\', '\\a'));
+	t.false(isPathInside('\\a\\', '\\a\\'));
+	t.false(isPathInside('\\a\\b', '\\a\\b'));
 	t.false(isPathInside('\\a\\bc\\d', '\\a\\b'));
-	t.true(isPathInside('C:\\a\\b\\c', 'c:\\a\\b\\c'));
+	t.false(isPathInside('C:\\a\\b\\c', 'c:\\a\\b\\c'));
 
-	t.true(isPathInside('A\\b', 'a\\b'));
-	t.true(isPathInside('C:\\a\\b', 'c:\\a\\b'));
+	t.false(isPathInside('A\\b', 'a\\b'));
+	t.false(isPathInside('C:\\a\\b', 'c:\\a\\b'));
 	t.false(isPathInside('C:\\a\\b', 'D:\\a'));
 	t.false(isPathInside('a\\bc\\d', 'a\\b'));
 	t.false(isPathInside('a\\..\\b', 'a'));
-	t.true(isPathInside('a\\..\\b', 'b'));
+	t.false(isPathInside('a\\..\\b', 'b'));
 
 	path.relative = relative;
 	path.resolve = resolve;
